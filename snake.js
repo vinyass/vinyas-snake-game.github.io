@@ -3,6 +3,8 @@ import { getInputDirection } from "./input.js";
 export const SNAKE_SPEED = 5; // times moved per second.
 const snakeBody = [{ x: 11, y: 11 }];
 let newSegments = 0;
+let score = 0;
+let scoreElem = null;
 
 export function update() {
   addSegments();
@@ -22,11 +24,14 @@ export function draw(gameBoard) {
     snakeElement.style.gridColumnStart = segment.x;
     snakeElement.classList.add("snake");
     gameBoard.appendChild(snakeElement);
+    scoreElem = document.getElementById("score");
+    scoreElem.innerText = score;
   });
 }
 
 export function expandSnake(amount) {
   newSegments += amount;
+  updateScore();
 }
 
 export function onSnake(position, { ignoreHead = false } = {}) {
@@ -46,6 +51,14 @@ function addSegments() {
   }
 
   newSegments = 0;
+}
+
+function updateScore() {
+  scoreElem.innerText = ++score;
+}
+
+export function getScore() {
+  return score;
 }
 
 export function getSnakeHead() {

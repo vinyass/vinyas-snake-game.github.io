@@ -31,7 +31,7 @@
       }
 
       .snake:first-of-type {
-        background-color: red;
+        background-color: hsl(0, 100%, 50%);
       }
 
       .food {
@@ -39,10 +39,41 @@
         border: 0.25vmin solid black;
         border-radius: 50%;
       }
+      #score-container {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-family: "Helvetica", sans-serif;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+      }
+      #score-container span {
+        margin: 0 10px;
+      }
+      #score {
+        color: hsl(0, 100%, 50%);
+      }
+      #highest-score {
+        color: hsl(100, 100%, 50%);
+      }
+      @media screen and (max-width: 1000px) and (min-width: 700px) {
+        #score-container {
+          flex-direction: column;
+        }
+      }
     </style>
     <script src="game.js" defer type="module"></script>
   </head>
   <body>
+    <div id="score-container">
+      <span>Score</span>
+      <span id="score"></span>
+      <span>High</span>
+      <span id="highest-score"></span>
+    </div>
+
     <div id="game-board"></div>
   </body>
 </html>
