@@ -20,8 +20,8 @@ function main(currentTime) {
   setHighestScore();
   if (gameover) {
     const score = getScore();
-
     setHighestScore(score);
+
     if (confirm(`You lost!\n Score: ${score} \n Press ok to restart`)) {
       window.location = "/";
     }
@@ -39,10 +39,8 @@ function main(currentTime) {
 window.requestAnimationFrame(main);
 
 function setHighestScore(score = 0) {
-  highestScore = Math.max(
-    parseInt(localStorage.getItem("snake-high-score")),
-    score
-  );
+  const localStorageValue = localStorage.getItem("snake-high-score") || 0;
+  highestScore = Math.max(parseInt(localStorageValue), score);
   document.getElementById("highest-score").innerHTML = highestScore;
   localStorage.setItem("snake-high-score", highestScore);
 }
