@@ -23,7 +23,7 @@ function main(currentTime) {
     setHighestScore(score);
 
     if (confirm(`You lost!\n Score: ${score} \n Press ok to restart`)) {
-      window.location = "/";
+      window.location.reload();
     }
     return;
   }
